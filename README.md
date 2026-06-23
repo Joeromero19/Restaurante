@@ -61,7 +61,6 @@ Durante este proyecto fortalecí conocimientos en:
 | **Nombre** | **Código** |
 |--------|--------|
 | Johan Emanuel Rodriguez Romero | 20222578102 |
-| Juan Esteban Garcia Parra | _(pendiente de código)_ |
 
 ---
 
