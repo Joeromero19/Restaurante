@@ -1,0 +1,326 @@
+/* ============================================================
+   login.css — Sabor Distrital
+   Diseño refinado con estética editorial restaurant
+   Fuentes: Playfair Display (display) + DM Sans (body)
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --negro:      #0d0d0d;
+    --marron:     #3b1f0a;
+    --dorado:     #c8973a;
+    --dorado-claro: #e8b96a;
+    --crema:      #faf7f2;
+    --crema-oscuro: #f0ead8;
+    --gris-texto: #5a5a5a;
+    --rojo-error: #c0392b;
+    --verde-ok:   #2e7d52;
+    --radio:      8px;
+    --sombra:     0 8px 40px rgba(0,0,0,0.12);
+}
+
+html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--crema);
+}
+
+/* ---- Layout principal ---- */
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* ---- Panel izquierdo: branding ---- */
+.login-brand {
+    position: relative;
+    background: var(--marron);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 3rem;
+}
+
+.brand-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(200,151,58,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(200,151,58,0.10) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Patrón geométrico sutil */
+.login-brand::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(200,151,58,0.2);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+}
+.login-brand::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(200,151,58,0.15);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+}
+
+.brand-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--crema);
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background: var(--dorado);
+    color: var(--marron);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 0 8px rgba(200,151,58,0.2);
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--crema);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.brand-tagline {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(250,247,242,0.65);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.brand-deco {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.brand-deco span {
+    display: block;
+    height: 2px;
+    background: var(--dorado);
+    border-radius: 2px;
+}
+.brand-deco span:nth-child(1) { width: 32px; }
+.brand-deco span:nth-child(2) { width: 12px; opacity: 0.5; }
+.brand-deco span:nth-child(3) { width: 8px; opacity: 0.3; }
+
+/* ---- Panel derecho: formulario ---- */
+.login-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: var(--crema);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 0.4rem;
+}
+
+.form-subtitle {
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    margin-bottom: 2rem;
+}
+
+/* Alertas */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radio);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+.alert-error {
+    background: #fde8e6;
+    color: var(--rojo-error);
+    border-left: 3px solid var(--rojo-error);
+}
+.alert-info {
+    background: #e8f5ee;
+    color: var(--verde-ok);
+    border-left: 3px solid var(--verde-ok);
+}
+.alert-icon { font-size: 1rem; }
+
+/* Grupos de formulario */
+.form-group { margin-bottom: 1.4rem; }
+
+.form-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--marron);
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.85rem 2.8rem 0.85rem 1rem;
+    border: 1.5px solid #ddd;
+    border-radius: var(--radio);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--negro);
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(200,151,58,0.15);
+}
+
+.form-input::placeholder { color: #bbb; }
+
+.input-icon {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #aaa;
+    cursor: default;
+    user-select: none;
+}
+
+.toggle-pwd { cursor: pointer; }
+.toggle-pwd:hover { color: var(--dorado); }
+
+.form-hint {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.77rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* Botón principal */
+.btn-login {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.4rem;
+    background: var(--marron);
+    color: var(--crema);
+    border: none;
+    border-radius: var(--radio);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(59,31,10,0.25);
+}
+
+.btn-login:hover {
+    background: var(--dorado);
+    color: var(--marron);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(200,151,58,0.35);
+}
+
+.btn-login:active { transform: translateY(0); }
+
+.btn-arrow { font-size: 1.1rem; transition: transform 0.2s; }
+.btn-login:hover .btn-arrow { transform: translateX(4px); }
+
+/* Footer del form */
+.login-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--crema-oscuro);
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gris-texto);
+}
+.login-footer a {
+    color: var(--dorado);
+    text-decoration: none;
+    font-weight: 500;
+}
+.login-footer a:hover { text-decoration: underline; }
+
+/* ---- Responsive: mobile ---- */
+@media (max-width: 768px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+    .login-brand {
+        padding: 2.5rem 1.5rem;
+        min-height: 220px;
+    }
+    .brand-name { font-size: 2.2rem; }
+    .login-form-panel { padding: 2rem 1.5rem; }
+    .form-wrapper { max-width: 100%; }
+}
+
+/* ============================================================
+   Validación de formularios — estados y mensajes inline
+============================================================ */
+.input-error {
+    border-color: #e53e3e !important;
+    background: #fff5f5 !important;
+}
+.input-ok {
+    border-color: #38a169 !important;
+    background: #f0fff4 !important;
+}
+.v-error {
+    display: block;
+    margin-top: 0.28rem;
+    font-size: 0.78rem;
+    color: #c53030;
+    font-weight: 500;
+}
+/* Ícono de estado al lado del campo */
+.input-error + .input-icon  { color: #e53e3e; }
+.input-ok    + .input-icon  { color: #38a169; }
